@@ -2,6 +2,7 @@ package lib
 
 import (
 	"bufio"
+	"fmt"
 	"io/fs"
 	"log"
 	"reflect"
@@ -56,9 +57,9 @@ func (r *Runner[InputType, OutputType]) Run(inputFilePath string, expectedOutput
 	benchmark := NewBenchmark("solver")
 	answer := r.Solver(input)
 	benchmark.Finish()
-	answerOk := "FAIL"
-	if reflect.DeepEqual(answer, expectedOutput) {
-		answerOk = "OK"
+	answerOk := "OK"
+	if !reflect.DeepEqual(answer, expectedOutput) {
+		answerOk = fmt.Sprintf("FAIL, expected %v", expectedOutput)
 	}
 	log.Printf("answer: %v [%s]\n\n", answer, answerOk)
 }
