@@ -36,3 +36,25 @@ func TestParseInt64(t *testing.T) {
 		AssertGotError(t, err)
 	})
 }
+
+func TestSplitLines(t *testing.T) {
+	t.Run("simple test", func(t *testing.T) {
+		lines := []string{
+			"a",
+			"b",
+			"",
+			"c",
+			"",
+			"e",
+			"f",
+			"g",
+		}
+		got := SplitLines(lines, "")
+		want := [][]string{
+			{"a", "b"},
+			{"c"},
+			{"e", "f", "g"},
+		}
+		AssertEqual(t, got, want)
+	})
+}

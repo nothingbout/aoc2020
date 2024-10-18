@@ -30,3 +30,17 @@ func AssertGotError(t *testing.T, err error) {
 		t.Error("expected error but got nil")
 	}
 }
+
+func SplitLines(lines []string, separatorLine string) (groups [][]string) {
+	curGroup := []string{}
+	for _, line := range lines {
+		if line == separatorLine {
+			groups = append(groups, curGroup)
+			curGroup = []string{}
+		} else {
+			curGroup = append(curGroup, line)
+		}
+	}
+	groups = append(groups, curGroup)
+	return groups
+}
