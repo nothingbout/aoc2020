@@ -14,8 +14,6 @@ type puzzleInput struct {
 	entries []string
 }
 
-type puzzleAnswer = int64
-
 func loadInput(inputLines []string) puzzleInput {
 	input := puzzleInput{}
 	for _, line := range inputLines {
@@ -24,17 +22,17 @@ func loadInput(inputLines []string) puzzleInput {
 	return input
 }
 
-func solvePart1(input puzzleInput) (answer puzzleAnswer) {
+func solvePart1(input puzzleInput) (answer int64) {
 	return
 }
 
-func solvePart2(input puzzleInput) (answer puzzleAnswer) {
+func solvePart2(input puzzleInput) (answer int64) {
 	return
 }
 
 func main() {
 	{ // part 1
-		runner := &lib.Runner[puzzleInput, puzzleAnswer]{
+		runner := &lib.Runner[puzzleInput, int64]{
 			InputFileSystem: inputFileSystem,
 			InputLoader:     loadInput,
 			Solver:          solvePart1,
@@ -46,7 +44,7 @@ func main() {
 	}
 
 	{ // part 2
-		// runner := &lib.Runner[puzzleInput, puzzleAnswer]{
+		// runner := &lib.Runner[puzzleInput, int64]{
 		// 	InputFileSystem: inputFileSystem,
 		// 	InputLoader:     loadInput,
 		// 	Solver:          solvePart2,
