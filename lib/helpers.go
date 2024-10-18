@@ -44,3 +44,7 @@ func SplitLines(lines []string, separatorLine string) (groups [][]string) {
 	groups = append(groups, curGroup)
 	return groups
 }
+
+func CloneSlice[A any](slice []A) []A {
+	return append(slice[:0:0], slice...)
+}
