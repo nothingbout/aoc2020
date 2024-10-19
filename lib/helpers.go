@@ -59,6 +59,16 @@ func CloneMap[A comparable, B any](orig map[A]B) map[A]B {
 	return clone
 }
 
+func FilterSlice[A any](slice []A, predicate func(A) bool) []A {
+	var result []A
+	for _, v := range slice {
+		if predicate(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
 func Min[A constraints.Ordered](x, y A) A {
 	if x < y {
 		return x
@@ -78,4 +88,17 @@ func Abs[A constraints.Float | constraints.Integer](x A) A {
 		return -x
 	}
 	return x
+}
+
+// GCD: greatest common divisor (euclidean algorithm)
+func GCD(a, b int64) int64 {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
+// LCD: least common denominator
+func LCD(a, b int64) int64 {
+	return (a * b) / GCD(a, b)
 }

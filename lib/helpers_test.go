@@ -58,3 +58,9 @@ func TestSplitLines(t *testing.T) {
 		AssertEqual(t, got, want)
 	})
 }
+
+func TestLCD(t *testing.T) {
+	t.Run("test", func(t *testing.T) {
+		AssertEqual(t, LCD(12, 15), 60)
+	})
+}
