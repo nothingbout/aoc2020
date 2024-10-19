@@ -4,6 +4,8 @@ import (
 	"reflect"
 	"strconv"
 	"testing"
+
+	"golang.org/x/exp/constraints"
 )
 
 func Must[A any](x A, err error) A {
@@ -47,4 +49,18 @@ func SplitLines(lines []string, separatorLine string) (groups [][]string) {
 
 func CloneSlice[A any](slice []A) []A {
 	return append(slice[:0:0], slice...)
+}
+
+func Min[A constraints.Ordered](x, y A) A {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+func Max[A constraints.Ordered](x, y A) A {
+	if x > y {
+		return x
+	}
+	return y
 }
