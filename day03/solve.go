@@ -2,7 +2,7 @@ package main
 
 import (
 	lib "aoc2020/lib"
-	v2 "aoc2020/lib/vec2int"
+	v2 "aoc2020/lib/vec/int2"
 	"embed"
 )
 

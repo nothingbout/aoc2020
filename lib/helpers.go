@@ -51,6 +51,14 @@ func CloneSlice[A any](slice []A) []A {
 	return append(slice[:0:0], slice...)
 }
 
+func CloneMap[A comparable, B any](orig map[A]B) map[A]B {
+	clone := make(map[A]B)
+	for k, v := range orig {
+		clone[k] = v
+	}
+	return clone
+}
+
 func Min[A constraints.Ordered](x, y A) A {
 	if x < y {
 		return x
