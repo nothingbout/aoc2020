@@ -1,6 +1,9 @@
 package int2
 
-import "strings"
+import (
+	"aoc2020/lib"
+	"strings"
+)
 
 type single = int64
 
@@ -9,10 +12,12 @@ type Vec struct {
 	Y single
 }
 
-func Zero() Vec            { return Vec{X: 0, Y: 0} }
-func Make(X, Y single) Vec { return Vec{X, Y} }
-func Add(a, b Vec) Vec     { return Make(a.X+b.X, a.Y+b.Y) }
-func Sub(a, b Vec) Vec     { return Make(a.X-b.X, a.Y-b.Y) }
+func Zero() Vec                { return Vec{X: 0, Y: 0} }
+func Make(X, Y single) Vec     { return Vec{X, Y} }
+func Add(a, b Vec) Vec         { return Make(a.X+b.X, a.Y+b.Y) }
+func Sub(a, b Vec) Vec         { return Make(a.X-b.X, a.Y-b.Y) }
+func Scale(a Vec, s int64) Vec { return Make(a.X*s, a.Y*s) }
+func Abs(a Vec) Vec            { return Make(lib.Abs(a.X), lib.Abs(a.Y)) }
 
 var AdjOffsets8 = []Vec{
 	{X: -1, Y: -1},

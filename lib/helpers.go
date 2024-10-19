@@ -72,3 +72,10 @@ func Max[A constraints.Ordered](x, y A) A {
 	}
 	return y
 }
+
+func Abs[A constraints.Float | constraints.Integer](x A) A {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
