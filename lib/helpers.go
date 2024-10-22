@@ -69,6 +69,18 @@ func FilterSlice[A any](slice []A, predicate func(A) bool) []A {
 	return result
 }
 
+func MapSlice[A, B any](slice []A, f func(A) B) []B {
+	result := make([]B, 0, len(slice))
+	for _, v := range slice {
+		result = append(result, f(v))
+	}
+	return result
+}
+
+func SliceRemoveAt[A any](slice []A, index int) []A {
+	return append(slice[:index], slice[index+1:]...)
+}
+
 func Min[A constraints.Ordered](x, y A) A {
 	if x < y {
 		return x
