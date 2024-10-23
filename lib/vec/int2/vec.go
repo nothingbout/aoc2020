@@ -2,6 +2,7 @@ package int2
 
 import (
 	"aoc2020/lib"
+	"math"
 	"strings"
 )
 
@@ -13,11 +14,15 @@ type Vec struct {
 }
 
 func Zero() Vec                { return Vec{X: 0, Y: 0} }
+func MinValue() Vec            { return Make(math.MinInt64, math.MinInt64) }
+func MaxValue() Vec            { return Make(math.MaxInt64, math.MaxInt64) }
 func Make(X, Y single) Vec     { return Vec{X, Y} }
 func Add(a, b Vec) Vec         { return Make(a.X+b.X, a.Y+b.Y) }
 func Sub(a, b Vec) Vec         { return Make(a.X-b.X, a.Y-b.Y) }
 func Scale(a Vec, s int64) Vec { return Make(a.X*s, a.Y*s) }
 func Abs(a Vec) Vec            { return Make(lib.Abs(a.X), lib.Abs(a.Y)) }
+func Min(a, b Vec) Vec         { return Make(lib.Min(a.X, b.X), lib.Min(a.Y, b.Y)) }
+func Max(a, b Vec) Vec         { return Make(lib.Max(a.X, b.X), lib.Max(a.Y, b.Y)) }
 
 var AdjOffsets8 = []Vec{
 	{X: -1, Y: -1},
@@ -32,7 +37,7 @@ var AdjOffsets8 = []Vec{
 
 func SprintGrid(gridSize Vec, sprintCell func(pos Vec) string) string {
 	var result strings.Builder
-	for y := int64(0); y < gridSize.X; y++ {
+	for y := int64(0); y < gridSize.Y; y++ {
 		for x := int64(0); x < gridSize.X; x++ {
 			pos := Make(x, y)
 			result.WriteString(sprintCell(pos))
