@@ -30,6 +30,8 @@ func Abs(a Vec) Vec            { return Make(lib.Abs(a.X), lib.Abs(a.Y), lib.Abs
 func Min(a, b Vec) Vec         { return Make(lib.Min(a.X, b.X), lib.Min(a.Y, b.Y), lib.Min(a.Z, b.Z)) }
 func Max(a, b Vec) Vec         { return Make(lib.Max(a.X, b.X), lib.Max(a.Y, b.Y), lib.Max(a.Z, b.Z)) }
 
+func (a Vec) Add(b Vec) Vec { return Add(a, b) }
+
 var mutexAdjOffsets26 sync.Mutex
 var adjOffsets26 []Vec
 
